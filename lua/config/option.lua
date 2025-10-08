@@ -4,3 +4,5 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.termguicolors = true
 vim.cmd[[colorscheme tokyonight]]
+
+--require("dbee").install("go")

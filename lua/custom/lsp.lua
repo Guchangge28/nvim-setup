@@ -1,2 +1,4 @@
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("deno_ls")
+vim.lsp.enable("sqlls")
+
