@@ -9,14 +9,22 @@ local function get_jdtls_workspace_dir()
 end
 
 local function get_jdtls_jvm_args()
-  local env = os.getenv('JDTLS_JVM_ARGS')
+  local lombok = vim.fn.expand(
+    '~/.local/share/nvim/mason/share/jdtls/lombok.jar'
+  )
+
+  local env = (os.getenv('JDTLS_JVM_ARGS') or '')
+    .. ' -javaagent:' .. lombok
+
   local args = {}
-  for a in string.gmatch((env or ''), '%S+') do
+  for a in string.gmatch(env, '%S+') do
     local arg = string.format('--jvm-arg=%s', a)
     table.insert(args, arg)
   end
+
   return unpack(args)
 end
+
 -- TODO: use a custom root
 local root_markers1 = {
   -- Multi-module projects

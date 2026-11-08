@@ -23,6 +23,34 @@ return {
 			desc = 'Telescope buffers',
 		},
 		{
+			'<leader>fd',
+			function()
+				require('telescope.builtin').diagnostics()
+			end,
+			desc = 'Telescope diagnostics',
+		},
+		{
+			'<leader>fD',
+			function()
+				require('telescope.builtin').diagnostics({ bufnr = 0 })
+			end,
+			desc = 'Telescope Diagnostics current buffer',
+		},
+		{
+			'<leader>fg',
+			function()
+				require('telescope.builtin').live_grep()
+			end,
+			desc = 'Telescope find global word',
+		},
+		{
+			'<leader>fs',
+			function()
+				require('telescope.builtin').lsp_document_symbols()
+			end,
+			desc = 'Telescope document symbols',
+		},
+		{
 			'<leader>gf',
 			function()
 				require('telescope.builtin').git_files({ show_untracked = true })
@@ -46,7 +74,7 @@ return {
 		{
 			'<leader>bb',
 			function()
-				require('telescope').extensions.file_browser.file_browser(--[[{ path = '%:h:p', select_buffer = true }]])
+				require('telescope').extensions.file_browser.file_browser({ path = '%:h:p', select_buffer = true })
 			end,
 			desc = 'Telescope file browser',
 		}
